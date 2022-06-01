@@ -1,7 +1,7 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const cors = require('cors');
-const jwt = require("jsonwebtoken");
+const bodyParser = require('body-parser');
 
 dotenv.config();
 
@@ -15,7 +15,6 @@ app.get('/', (req, res) => {
   res.send('Tarea...')
 })
 
-// Routes //
 app.use(require('./routes/routes'));
 
 app.listen(port, () => {
