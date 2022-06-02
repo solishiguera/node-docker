@@ -21,7 +21,7 @@ module.exports = {
 
   createUser: async (req, res, next) => {
     try {
-      const user = await UserService.createUser(req.body.email, req.body.password);
+      const user = await UserService.createUser(req.body.email, req.body.hashed_password);
       res.json({user});
     } catch (err) {
       res.json({ message: `Error al crear usuario. Err: ${err}` });
