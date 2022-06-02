@@ -1,4 +1,4 @@
-const pool = require('../config/db');
+//const pool = require('../db/con');
 const timestamp = new Date();
 const Model = require('../model/user.model');
 
