@@ -1,0 +1,11 @@
+version: "3.7"
+
+services: 
+
+  add-user:
+    build: ./
+    image: add-user
+    ports:
+      - "4005:4005"
+    volumes:
+      - "./:/code"

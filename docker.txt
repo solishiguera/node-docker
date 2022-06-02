@@ -1,0 +1,6 @@
+docker build -t add-user .
+docker run -p 4005:4005 -d --name add-user-container add-user
+docker ps
+
+
+docker-compose up

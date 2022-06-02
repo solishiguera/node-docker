@@ -13,9 +13,11 @@ module.exports = {
   getUserById: async (req, res, next) => {
     try {
       const user = await UserService.getUserById(req.params.id);
+      if(user == null)  throw 'Not found'
+
       res.json({user});
     } catch (err) {
-      res.json({ message: `Error al obtener usuario. Err: ${err}` });
+      res.status(404).json({ message: `Error al obtener usuario. Err: ${err}` });
     }
   },
 
@@ -31,7 +33,7 @@ module.exports = {
   deleteUserById: async (req, res, next) => {
     try {
       await UserService.deleteUserById(req.params.id);
-      res.json({message: 'Eliminado exitosamente'});
+      res.sendStatus(204)
     } catch (err) {
       res.json({ message: `Error al eliminar usuario. Err: ${err}` });
     }

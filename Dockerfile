@@ -11,7 +11,7 @@ RUN npm install
 #Bundle app source
 COPY . /src
 
-EXPOSE 3000
+EXPOSE 4005
 
 CMD npm start
 
