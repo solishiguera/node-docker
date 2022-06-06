@@ -15,7 +15,7 @@ module.exports = {
       const users = await EmailService.trigger(req.body.to_email, req.body.from_email, req.body.content);
       res.json({users});
     } catch (err) {
-      res.json({ message: `. Err: ${err}` });
+      res.json({ message: `Error al agregar correo. Err: ${err}` });
     }
   }
 
