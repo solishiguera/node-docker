@@ -1,48 +1,29 @@
 const Model = require('../model/email.model');
 
 module.exports = { 
-  getUsers : async () => {
+  getByEmail : async (from_email) => {
     try {
-      const users = await Model.User.findAll()
-      return users;
+      const emails = await Model.Email.findAll({ where: { from_email: from_email } })
+      if(emails == null) throw 'Email not found'
+      
+      return emails;
     } catch (error) { 
-      console.log(`Service error: error al obtener usuarios: Error: ${error}`)
+      console.log(`Service error: error al obtener correos: Error: ${error}`)
     }
   }, 
 
-  getUserById : async (id) => {
+  trigger : async (to_email, from_email, content) => {
     try {
-      const user = await Model.User.findOne({
-        where: {id: id}
+      const email = await Model.Email.create({
+        to_email: to_email,
+        from_email: from_email,
+        content: content
       })
-      return user;
+      return email;
     } catch (error) { 
-      console.log(`Service error: error al obtener usuario: Error: ${error}`)
+      console.log(`Service error: error al crear correo: Error: ${error}`)
     }
-  }, 
+  }
 
-  createUser : async (email, password) => {
-    try {
-      const user = await Model.User.create({
-        email: email,
-        hashed_password: password
-      })
-      return user;
-    } catch (error) { 
-      console.log(`Service error: error al crear usuario: Error: ${error}`)
-    }
-  }, 
-
-  deleteUserById : async (id) => {
-    try {
-      await Model.User.destroy({
-        where:{
-          id: id
-        }
-      })
-    } catch (error) { 
-      console.log(`Service error: error al eliminar usuario: Error: ${error}`)
-    }
-  }, 
 }
 

@@ -2,27 +2,25 @@ const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require('../db/config');
 
 module.exports = { 
-  User : sequelize.define('user_ms', {
+  Email : sequelize.define('email_ms', {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
     }, 
 
-    email: {
-      type: DataTypes.STRING,
-      unique: true
+    from_email: {
+      type: DataTypes.STRING
     },
-
-    hashed_password: {
-      type: DataTypes.STRING,
-    },
-
-    is_active: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: false
-    }
     
+    to_email: {
+      type: DataTypes.STRING
+    },
+
+    content: {
+      type: DataTypes.STRING
+    }
+
   }, 
   {
     timestamps: false,
