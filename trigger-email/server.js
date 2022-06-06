@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 4005
+const port = process.env.PORT || 4010
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended : true}));

@@ -1,0 +1,11 @@
+version: "3.7"
+
+services: 
+
+  trigger-email:
+    build: ./
+    image: trigger-email
+    ports:
+      - "4010:4010"
+    volumes:
+      - "./:/code"
